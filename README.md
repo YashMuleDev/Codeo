@@ -110,7 +110,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/codeo.git
+git clone https://github.com/YashMuleDev/Codeo.git
 cd codeo
 
 # 2. Install dependencies
@@ -334,8 +334,8 @@ If you find this project helpful, please consider:
 
 ## 📞 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/codeo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/codeo/discussions)
+- **Issues**: [GitHub Issues](https://github.com/YashMuleDev/Codeo/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YashMuleDev/Codeo/discussions)
 - **Original Project**: [CodeSync by Sahil Atahar](https://github.com/sahilatahar/Code-Sync)
 
 ---
