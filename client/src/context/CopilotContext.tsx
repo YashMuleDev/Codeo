@@ -53,25 +53,30 @@ const CopilotContextProvider = ({ children }: { children: ReactNode }) => {
             setIsRunning(false)
             toast.dismiss()
         } catch (error) {
-            console.error(error)
+            console.error("Copilot error:", error)
             setIsRunning(false)
             toast.dismiss()
             toast.error("Failed to generate the code")
         }
     }
 
-    return (
-        <CopilotContext.Provider
-            value={{
-                setInput,
-                output,
-                isRunning,
-                generateCode,
-            }}
-        >
-            {children}
-        </CopilotContext.Provider>
-    )
+    try {
+        return (
+            <CopilotContext.Provider
+                value={{
+                    setInput,
+                    output,
+                    isRunning,
+                    generateCode,
+                }}
+            >
+                {children}
+            </CopilotContext.Provider>
+        )
+    } catch (error) {
+        console.error("CopilotContext render error:", error)
+        return <>{children}</>
+    }
 }
 
 export { CopilotContextProvider }

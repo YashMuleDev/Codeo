@@ -40,14 +40,21 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
         drawingData,
         setDrawingData,
     } = useAppContext()
+    
     const socket: Socket = useMemo(
-        () =>
-            io(BACKEND_URL, {
-                reconnectionAttempts: 5,
-                reconnectionDelay: 1000,
-                timeout: 10000,
-                transports: ['websocket', 'polling'],
-            }),
+        () => {
+            try {
+                return io(BACKEND_URL, {
+                    reconnectionAttempts: 5,
+                    reconnectionDelay: 1000,
+                    timeout: 10000,
+                    transports: ['websocket', 'polling'],
+                })
+            } catch (error) {
+                console.error("Socket initialization error:", error)
+                throw error
+            }
+        },
         [],
     )
 
