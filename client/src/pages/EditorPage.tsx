@@ -26,8 +26,10 @@ function EditorPage() {
         if (currentUser.username.length > 0) return
         const username = location.state?.username
         if (username === undefined) {
+            // Redirect to home page if no username
             navigate("/", {
                 state: { roomId },
+                replace: true,
             })
         } else if (roomId) {
             const user: User = { username, roomId }
@@ -43,8 +45,26 @@ function EditorPage() {
         socket,
     ])
 
+    // Show loading while redirecting or connecting
+    if (currentUser.username.length === 0 && !location.state?.username) {
+        return (
+            <div className="flex h-screen items-center justify-center">
+                <h1 className="text-xl text-white">Redirecting to home...</h1>
+            </div>
+        )
+    }
+
     if (status === USER_STATUS.CONNECTION_FAILED) {
         return <ConnectionStatusPage />
+    }
+
+    // Show loading while joining
+    if (status === USER_STATUS.ATTEMPTING_JOIN || status === USER_STATUS.INITIAL) {
+        return (
+            <div className="flex h-screen items-center justify-center">
+                <h1 className="text-xl text-white">Joining room...</h1>
+            </div>
+        )
     }
 
     return (
