@@ -29,6 +29,8 @@ export const useSocket = (): SocketContextType => {
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
 
+console.log("Connecting to backend:", BACKEND_URL)
+
 const SocketProvider = ({ children }: { children: ReactNode }) => {
     const {
         users,
