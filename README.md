@@ -10,7 +10,9 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18+-43853D?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7-010101?style=for-the-badge&logo=socket.io)](https://socket.io/)
 
-[Live Demo](https://code-sync-live.vercel.app/) • [Documentation](#-documentation) • [Deploy Your Own](#-deploy-your-own) • [Contributing](CONTRIBUTING.md)
+[Live Demo](https://yash-code-editor.vercel.app/) • [Report Bug](https://github.com/YashMuleDev/Codeo/issues) • [Request Feature](https://github.com/YashMuleDev/Codeo/issues)
+
+![Preview](preview.png)
 
 </div>
 
@@ -20,7 +22,7 @@
 
 **Codeo** is a powerful real-time collaborative code editor that enables multiple developers to code together seamlessly. Built with modern web technologies, it provides a complete development environment in your browser with real-time synchronization, file management, and team collaboration features.
 
-> **Note**: This is a modified version of [CodeSync](https://github.com/sahilatahar/Code-Sync) by Sahil Atahar, enhanced and maintained by Yash Mule for learning and improvement purposes.
+> **Note**: This project is based on [CodeSync](https://github.com/sahilatahar/Code-Sync) by Sahil Atahar, enhanced and maintained by Yash Mule for learning and improvement purposes.
 
 ---
 
@@ -33,10 +35,10 @@
 ### 💻 Core Features
 - ✅ Real-time collaborative code editing
 - ✅ Multi-file & folder management
-- ✅ Syntax highlighting (auto-detection)
+- ✅ Syntax highlighting (50+ languages)
 - ✅ Code execution environment
 - ✅ Download codebase as ZIP
-- ✅ Multiple programming languages
+- ✅ Auto-save functionality
 
 </td>
 <td width="50%">
@@ -59,7 +61,7 @@
 - **Code Execution**: Run code directly in the browser using Piston API
 - **AI Copilot**: Get AI-powered code suggestions and generation
 - **Customization**: Multiple themes, font sizes, and editor preferences
-- **Auto-Suggestions**: Context-aware code completion
+- **File System**: Create, edit, rename, and delete files and folders
 
 ---
 
@@ -90,10 +92,10 @@
 ![Socket.IO](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-### DevOps & Tools
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+### Deployment
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 </div>
 
@@ -111,33 +113,38 @@
 ```bash
 # 1. Clone the repository
 git clone https://github.com/YashMuleDev/Codeo.git
-cd codeo
+cd Codeo
 
-# 2. Install dependencies
-cd server && npm install
-cd ../client && npm install
+# 2. Install server dependencies
+cd server
+npm install
 
-# 3. Set up environment variables
-# Create .env files in both client and server directories
+# 3. Install client dependencies
+cd ../client
+npm install
+
+# 4. Set up environment variables
 
 # Server (.env)
-echo "PORT=3000" > server/.env
+cd ../server
+echo "PORT=3000" > .env
+echo "NODE_ENV=development" >> .env
 
 # Client (.env)
-echo "VITE_BACKEND_URL=http://localhost:3000" > client/.env
+cd ../client
+echo "VITE_BACKEND_URL=http://localhost:3000" > .env
 
-# 4. Start the development servers
+# 5. Start the development servers
 
-# Terminal 1 - Backend
+# Terminal 1 - Start Backend
 cd server
 npm run dev
 
-# Terminal 2 - Frontend
+# Terminal 2 - Start Frontend
 cd client
 npm run dev
 
-# 5. Open your browser
-# Navigate to http://localhost:5173
+# 6. Open your browser at http://localhost:5173
 ```
 
 ### Docker Installation
@@ -146,42 +153,52 @@ npm run dev
 # Using Docker Compose (Recommended)
 docker-compose up -d
 
-# Or pull pre-built images
-docker pull sahilatahar/code-sync-server:latest
-docker pull sahilatahar/code-sync-client:latest
-
-# Run containers
-docker run -d -p 3000:3000 --name codeo-server sahilatahar/code-sync-server:latest
-docker run -d -p 5173:5173 --name codeo-client sahilatahar/code-sync-client:latest
+# Access the application at http://localhost:5173
 ```
 
 ---
 
 ## 🌐 Deploy Your Own
 
-Deploy Codeo for **FREE** in just 5-15 minutes!
+Deploy Codeo for **FREE** in minutes!
+
+### Deployment Options
 
 <div align="center">
 
-### 📚 Choose Your Deployment Guide
-
-| Your Situation | Guide | Time | Difficulty |
-|----------------|-------|------|------------|
-| 🎓 Complete Beginner | [DEPLOY-FROM-SCRATCH.md](./DEPLOY-FROM-SCRATCH.md) | 15 min | ⭐ Easy |
-| 📥 Downloaded Project | [DEPLOY-MY-SITUATION.md](./DEPLOY-MY-SITUATION.md) | 5 min | ⭐ Easy |
-| 💻 Have GitHub Repo | [QUICK-DEPLOY.md](./QUICK-DEPLOY.md) | 5 min | ⭐ Easy |
-| 🔧 Want All Options | [DEPLOYMENT.md](./DEPLOYMENT.md) | Varies | ⭐⭐ Medium |
-
-### 🎯 Recommended Free Hosting
-
-**Frontend**: Vercel or Netlify  
-**Backend**: Render or Railway  
-**Cost**: $0 (100% Free Forever)
-
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new)
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com)
+| Platform | Type | Free Tier | Deploy |
+|----------|------|-----------|--------|
+| **Vercel** | Frontend | ✅ Yes | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YashMuleDev/Codeo) |
+| **Render** | Backend | ✅ Yes | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com) |
+| **Railway** | Full Stack | ✅ Yes | [Deploy](https://railway.app) |
+| **Docker** | Self-hosted | ✅ Yes | See above |
 
 </div>
+
+### Quick Deployment Steps
+
+**1. Deploy Backend (Render)**
+- Go to [Render Dashboard](https://dashboard.render.com)
+- Click "New" → "Web Service"
+- Connect your GitHub repository
+- Configure:
+  - **Root Directory**: `server`
+  - **Build Command**: `npm install --include=dev && npm run build`
+  - **Start Command**: `npm start`
+  - **Environment Variable**: `FRONTEND_URL` = `your-vercel-url`
+
+**2. Deploy Frontend (Vercel)**
+- Go to [Vercel Dashboard](https://vercel.com/dashboard)
+- Click "Add New" → "Project"
+- Import your GitHub repository
+- Configure:
+  - **Root Directory**: `client`
+  - **Framework Preset**: Vite
+  - **Environment Variable**: `VITE_BACKEND_URL` = `your-render-url`
+
+**3. Update CORS**
+- Add your Vercel URL to Render's `FRONTEND_URL` environment variable
+- Redeploy both services
 
 ---
 
@@ -189,7 +206,7 @@ Deploy Codeo for **FREE** in just 5-15 minutes!
 
 ### Project Structure
 ```
-codeo/
+Codeo/
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── components/    # React components
@@ -197,8 +214,8 @@ codeo/
 │   │   ├── hooks/         # Custom hooks
 │   │   ├── pages/         # Page components
 │   │   ├── types/         # TypeScript types
-│   │   └── utils/         # Utility functions
-│   └── public/            # Static assets
+│   │   └── assets/        # Static assets
+│   └── public/            # Public files
 │
 ├── server/                # Node.js backend
 │   ├── src/
@@ -206,9 +223,9 @@ codeo/
 │   │   └── types/         # TypeScript types
 │   └── public/            # Static files
 │
-├── DEPLOY-FROM-SCRATCH.md # Complete deployment guide
-├── QUICK-DEPLOY.md        # Quick deployment guide
-└── docker-compose.yml     # Docker configuration
+├── docker-compose.yml     # Docker configuration
+├── LICENSE                # MIT License
+└── README.md             # This file
 ```
 
 ### Environment Variables
@@ -216,13 +233,13 @@ codeo/
 **Backend (`server/.env`)**
 ```env
 PORT=3000
-NODE_ENV=development
-FRONTEND_URL=http://localhost:5173
+NODE_ENV=production
+FRONTEND_URL=https://your-frontend-url.vercel.app
 ```
 
 **Frontend (`client/.env`)**
 ```env
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=https://your-backend-url.onrender.com
 ```
 
 ---
@@ -230,26 +247,27 @@ VITE_BACKEND_URL=http://localhost:3000
 ## 🎮 How to Use
 
 1. **Create or Join a Room**
+   - Visit the application
    - Enter your username
-   - Create a new room or join existing one with Room ID
+   - Create a new room or join with an existing Room ID
 
 2. **Start Collaborating**
    - Write code in real-time with your team
    - Create files and folders
    - Execute code directly in the browser
    - Chat with team members
-   - Use the collaborative whiteboard
+   - Use the collaborative whiteboard for brainstorming
 
 3. **Share & Collaborate**
    - Share the Room ID with your team
    - See live cursors and selections
-   - Get instant code synchronization
+   - Get instant code synchronization across all users
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+Contributions are welcome! Here's how you can help:
 
 1. 🍴 Fork the repository
 2. 🔨 Create a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -263,11 +281,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 🐛 Bug Reports & Feature Requests
 
-Found a bug or have a feature idea? Please open an issue on GitHub with:
-- Clear description
-- Steps to reproduce (for bugs)
-- Expected vs actual behavior
-- Screenshots (if applicable)
+Found a bug or have a feature idea?
+
+- 🐛 [Report a Bug](https://github.com/YashMuleDev/Codeo/issues/new?labels=bug)
+- 💡 [Request a Feature](https://github.com/YashMuleDev/Codeo/issues/new?labels=enhancement)
 
 ---
 
@@ -279,6 +296,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 This project is based on [CodeSync](https://github.com/sahilatahar/Code-Sync) by Sahil Atahar (MIT License).  
 Modified and maintained by **Yash Mule** for learning and enhancement purposes.
+
+See [ATTRIBUTION.md](ATTRIBUTION.md) for complete attribution details.
 
 ---
 
@@ -295,27 +314,20 @@ Special thanks to:
 
 ---
 
-## 👨‍💻 Original Author
+## 👨‍💻 Authors
 
 <div align="center">
+
+### Yash Mule
+*Maintainer & Developer*
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YashMuleDev)
 
 ### Sahil Atahar
 *Original CodeSync Creator*
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sahilatahar)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sahilatahar)
-
-</div>
-
----
-
-## 📊 Project Stats
-
-<div align="center">
-
-![GitHub last commit](https://img.shields.io/github/last-commit/sahilatahar/Code-Sync?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/sahilatahar/Code-Sync?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/sahilatahar/Code-Sync?style=for-the-badge)
 
 </div>
 
