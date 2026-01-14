@@ -14,21 +14,8 @@ const app = express()
 app.use(express.json())
 
 // CORS configuration for production
-const allowedOrigins = process.env.FRONTEND_URL 
-	? [process.env.FRONTEND_URL, "http://localhost:5173", "http://localhost:3000"] 
-	: ["http://localhost:5173", "http://localhost:3000"]
-
 app.use(cors({
-	origin: (origin, callback) => {
-		// Allow requests with no origin (like mobile apps or curl requests)
-		if (!origin) return callback(null, true)
-		
-		if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
-			callback(null, true)
-		} else {
-			callback(new Error('Not allowed by CORS'))
-		}
-	},
+	origin: true, // Allow all origins temporarily for debugging
 	credentials: true
 }))
 
@@ -37,16 +24,7 @@ app.use(express.static(path.join(__dirname, "public"))) // Serve static files
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: (origin, callback) => {
-			// Allow requests with no origin (like mobile apps or curl requests)
-			if (!origin) return callback(null, true)
-			
-			if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
-				callback(null, true)
-			} else {
-				callback(new Error('Not allowed by CORS'))
-			}
-		},
+		origin: true, // Allow all origins temporarily for debugging
 		credentials: true
 	},
 	maxHttpBufferSize: 1e8,
