@@ -2,12 +2,15 @@
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
 import AppProvider from "./context/AppProvider.tsx"
+import ErrorBoundary from "./components/ErrorBoundary.tsx"
 import "@/styles/global.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     // <React.StrictMode>
-    <AppProvider>
-        <App />
-    </AppProvider>,
+    <ErrorBoundary>
+        <AppProvider>
+            <App />
+        </AppProvider>
+    </ErrorBoundary>,
     // </React.StrictMode>
 )

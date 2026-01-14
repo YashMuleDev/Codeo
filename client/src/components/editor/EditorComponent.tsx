@@ -1,6 +1,7 @@
 import { useFileSystem } from "@/context/FileContext"
 import useResponsive from "@/hooks/useResponsive"
 import cn from "classnames"
+import ErrorBoundary from "../ErrorBoundary"
 import Editor from "./Editor"
 import FileTab from "./FileTab"
 
@@ -26,7 +27,17 @@ function EditorComponent() {
             })}
         >
             <FileTab />
-            <Editor />
+            <ErrorBoundary
+                fallback={
+                    <div className="flex h-full w-full items-center justify-center">
+                        <h1 className="text-xl text-white">
+                            Editor failed to load. Please refresh the page.
+                        </h1>
+                    </div>
+                }
+            >
+                <Editor />
+            </ErrorBoundary>
         </main>
     )
 }
